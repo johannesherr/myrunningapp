@@ -1,32 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+              xmlns:tools="http://schemas.android.com/tools" android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-    <LinearLayout
-            android:orientation="horizontal"
+
+
+    <TabHost
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        <Space
+            android:layout_height="match_parent"
+            android:id="@+id/tab_host">
+
+        <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:layout_weight="1"/>
-        <Button
-                android:text="Start Run"
-                android:layout_width="141dp"
-                android:layout_height="wrap_content" android:id="@+id/button"
-        />
-        <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:layout_weight="1"/>
-    </LinearLayout>
-    <TextView
-            android:text="TextView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" android:id="@+id/textView"
-            android:layout_weight="1" android:textSize="20sp"/>
-    <TextView
-            android:text="TextView"
-            android:layout_width="match_parent"
-            android:layout_height="51dp" android:id="@+id/status"
-            />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <TabWidget
+                    android:id="@android:id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            <FrameLayout
+                    android:id="@android:id/tabcontent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <LinearLayout
+                        android:id="@+id/tab1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                    <fragment android:name="de.johannesherr.myrunningapp.FragmentDev"
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              tools:layout="@layout/fragment_dev"
+                              android:id="@+id/dev_fragment"
+                    />
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:id="@+id/tab2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="List"
+                            android:id="@+id/completed_runs_text"/>
+                    <Button
+                            android:text="Refresh"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/refreshButton"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:id="@+id/tabHist"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                    <fragment android:name="de.johannesherr.myrunningapp.FragmentHistory"
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              tools:layout="@layout/fragment_history"
+                              android:id="@+id/hist_fragment"
+                    />
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:id="@+id/tab3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                    <SeekBar
+                            style="@style/Widget.AppCompat.SeekBar.Discrete"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:max="200"
+                            android:progress="0"
+                            android:id="@+id/seekBar"/>
+
+                    <ToggleButton
+                            android:text="ToggleButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/freqBtn"/>
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Speed"
+                            android:id="@+id/freqText"/>
+                    <ToggleButton
+                            android:text="Half"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/halfBtn"/>
+
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
 </LinearLayout>
